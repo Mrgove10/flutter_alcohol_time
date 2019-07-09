@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'options.dart';
+import 'package:flutter_alcohol_time/screens/start.dart';
+import 'package:flutter_alcohol_time/screens/options.dart';
 
 class HomeWidget extends StatefulWidget {
   @override
@@ -10,8 +11,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   //extends the stats of home widget ( is a state)
   @override
   Widget build(BuildContext context) {
-    Widget widgetForBody = OptionWidget();
-    Scaffold mainBody = Scaffold(
+    Widget widgetForBody = StartWidget();
+    return new Scaffold(
       appBar: AppBar(
         title: Text('Alcohol Time ⏰'),
         //backgroundColor: Colors.black,
@@ -22,27 +23,29 @@ class _HomeWidgetState extends State<HomeWidget> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-                /*child: Text('Drawer Header'),
+              child: Text('Drawer Header'),
               decoration: BoxDecoration(
                 color: Colors.blue,
-              ),*/
-                ),
+              ),
+            ),
             ListTile(
-              title: Text('TestItem'),
+              title: Text('start '),
               onTap: () {
                 // Update the state of the app
                 setState(() {
-                  widgetForBody = OptionWidget();
+                  widgetForBody = new StartWidget();
                 });
                 // Then close the drawer
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: Text('options'),
               onTap: () {
                 // Update the state of the app
-                // ...
+                 setState(() {
+                  widgetForBody = new OptionWidget();
+                });
                 // Then close the drawer
                 Navigator.pop(context);
               },
@@ -50,7 +53,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           ],
         ),
       ),
-       body: new Center(child: new HomeWidget()),
+      body: new StartWidget(),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -60,6 +63,5 @@ class _HomeWidgetState extends State<HomeWidget> {
         backgroundColor: Colors.blue,
       ),
     );
-    return mainBody;
   }
 }
