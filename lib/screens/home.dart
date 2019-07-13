@@ -14,7 +14,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     Widget widgetForBody = StartWidget();
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Alcohol Time ⏰'),
+        title: Text('Alcohol Time'),
         //backgroundColor: Colors.black,
       ),
       drawer: Drawer(

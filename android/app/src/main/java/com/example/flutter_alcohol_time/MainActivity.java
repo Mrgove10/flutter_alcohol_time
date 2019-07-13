@@ -1,4 +1,4 @@
-package com.example.flutter_alcohol_time;
+package com.adrien.flutter_alcohol_time;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
