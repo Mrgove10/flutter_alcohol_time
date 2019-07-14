@@ -1,4 +1,4 @@
-# flutter_alcohol_time
+# flutter_alcohol_time_v2
 
 A new Flutter project.
 
