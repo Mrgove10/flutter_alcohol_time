@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_alcohol_time_v2/components/statusCard.dart';
+import 'package:flutter_alcohol_time_v2/screens/stats.dart';
+import 'package:flutter_alcohol_time_v2/screens/options.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,15 +21,15 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  //MyHomePage() ;
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -37,7 +40,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  //final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -89,8 +92,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Center(
+              child: Card(
+                color: Colors.red,
+                elevation: 4,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const ListTile(
+                      leading: Icon(Icons.not_interested),
+                      title: Text('Do not drive'),
+                      subtitle: Text('you will be able to drive in XX:XX'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -104,10 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-       // label: Text('Add Drink'),
+        // label: Text('Add Drink'),
         tooltip: 'Add Drink',
-        child: Icon(Icons.add), 
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        child: Icon(Icons.add),
+      ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 4.0,
@@ -118,7 +137,10 @@ class _MyHomePageState extends State<MyHomePage> {
             IconButton(
               tooltip: 'Stats',
               icon: Icon(Icons.timeline),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StatsPage()));
+              },
             ),
             IconButton(
               icon: Icon(Icons.settings),
@@ -131,33 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class OptionPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          automaticallyImplyLeading: true,
-          //`true` if you want Flutter to automatically add Back Button when needed,
-          //or `false` if you want to force your own back button every where
-          title: Text('Options'),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context, false),
-          )),
-        body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-          child: Column(
-            children: <Widget>[
-              Text("options"),
-            ],
-          ),
-        ),
-         // mainAxisAlignment: MainAxisAlignment.center,
     );
   }
 }
